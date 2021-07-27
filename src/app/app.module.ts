@@ -18,19 +18,27 @@ import {
   NbMenuModule,
   NbToastrModule,
   NbWindowModule,
+  NbCardModule,
+  NbSearchModule,
+  NbContextMenuModule,
+  NbUserModule
 }
 from '@nebular/theme';
 
 
 
 import { PageComponent } from './components/page/page.component';
+import { HeaderComponent } from './components/header/header.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageComponent
+    PageComponent,
+    HeaderComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +48,10 @@ import { PageComponent } from './components/page/page.component';
     NbThemeModule.forRoot({ name: 'dark' }),
     NbLayoutModule,
     NbEvaIconsModule,
+    NbCardModule,
+    NbSearchModule,
+    NbContextMenuModule,
+    NbUserModule,
 
     NbButtonModule,
     NbSidebarModule.forRoot(),

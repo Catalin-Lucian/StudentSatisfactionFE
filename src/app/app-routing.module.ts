@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageComponent } from './components/page/page.component';
-
 import {
   NbAuthComponent,
   NbLoginComponent,
@@ -12,6 +11,8 @@ import {
   NbPasswordAuthStrategy,
   NbAuthModule,
 } from '@nebular/auth';
+
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -48,6 +49,10 @@ const routes: Routes = [
         component: NbResetPasswordComponent,
       },
     ],
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
   },
 ];
 
@@ -86,12 +91,17 @@ const socialLinks: NbAuthSocialLink[] = [];
           register:{
             endpoint:'/api/Authenticate/register',
             method:'post',
+            requireValidToken: false,
+            redirect: {
+              success: '/auth/login',
+              failure: null,
+            },
           }
         }),
       ],
       forms: {
         login: {
-          redirectDelay: 500, // delay before redirect after a successful login, while success message is shown to the user
+          redirectDelay: 100, // delay before redirect after a successful login, while success message is shown to the user
           strategy: 'email',  // strategy id key.
           rememberMe: false,   // whether to show or not the `rememberMe` checkbox
           showMessages: {     // show/not show success/error messages
