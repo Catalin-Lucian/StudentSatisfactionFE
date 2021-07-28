@@ -21,7 +21,10 @@ import {
   NbCardModule,
   NbSearchModule,
   NbContextMenuModule,
-  NbUserModule
+  NbUserModule,
+  NbActionsModule,
+  NbIconModule,
+
 }
 from '@nebular/theme';
 
@@ -30,6 +33,7 @@ from '@nebular/theme';
 import { PageComponent } from './components/page/page.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 
@@ -38,7 +42,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     AppComponent,
     PageComponent,
     HeaderComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +57,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     NbSearchModule,
     NbContextMenuModule,
     NbUserModule,
+    NbActionsModule,
+    NbIconModule,
 
     NbButtonModule,
     NbSidebarModule.forRoot(),

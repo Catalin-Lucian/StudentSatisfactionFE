@@ -10,9 +10,11 @@ import {
   NbResetPasswordComponent,
   NbPasswordAuthStrategy,
   NbAuthModule,
+  NbAuthJWTToken,
 } from '@nebular/auth';
 
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { HttpResponse } from '@angular/common/http';
 
 const routes: Routes = [
   {
@@ -25,7 +27,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo:'login',
+        redirectTo:'/auth/login',
         pathMatch:'full'
       },
       {
@@ -44,10 +46,10 @@ const routes: Routes = [
         path: 'request-password',
         component: NbRequestPasswordComponent,
       },
-      {
-        path: 'reset-password',
-        component: NbResetPasswordComponent,
-      },
+      // {
+      //   path: 'reset-password',
+      //   component: NbResetPasswordComponent,
+      // },
     ],
   },
   {
@@ -65,6 +67,12 @@ export interface NbAuthSocialLink {
   icon?: string,
 }
 
+interface AuthResponse{
+  id:string,
+  token:string,
+  expiration:string
+}
+
 const socialLinks: NbAuthSocialLink[] = [];
 
 @NgModule({
@@ -75,7 +83,11 @@ const socialLinks: NbAuthSocialLink[] = [];
       strategies: [
         NbPasswordAuthStrategy.setup({
           name: 'email',
+          token: {
+            class: NbAuthJWTToken,
+            key:'token',
 
+          },
           baseEndpoint:'',
           login: {
             endpoint: '/api/Authenticate/login',
@@ -96,12 +108,21 @@ const socialLinks: NbAuthSocialLink[] = [];
               success: '/auth/login',
               failure: null,
             },
+          },
+          logout:{
+            endpoint:'',
+            method:'post',
+            alwaysFail:false,
+            redirect: {
+              success: '/auth',
+              failure: null,
+            },
           }
         }),
       ],
       forms: {
         login: {
-          redirectDelay: 100, // delay before redirect after a successful login, while success message is shown to the user
+          // redirectDelay: 500, // delay before redirect after a successful login, while success message is shown to the user
           strategy: 'email',  // strategy id key.
           rememberMe: false,   // whether to show or not the `rememberMe` checkbox
           showMessages: {     // show/not show success/error messages
@@ -110,6 +131,11 @@ const socialLinks: NbAuthSocialLink[] = [];
           },
           socialLinks: socialLinks, // social links at the bottom of a page
         },
+        register:{
+          strategy:'email',
+
+        }
+
       },
     }),
   ],
