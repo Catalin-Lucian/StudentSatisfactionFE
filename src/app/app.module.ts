@@ -36,6 +36,8 @@ import { PageComponent } from './components/page/page.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
+import { AuthGuard } from './services/auth-guard.service';
+import { SurveyCardComponent } from './components/survey-card/survey-card.component';
 
 
 
@@ -45,7 +47,8 @@ import { HomeComponent } from './components/home/home.component';
     PageComponent,
     HeaderComponent,
     NotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    SurveyCardComponent
   ],
   imports: [
     BrowserModule,
@@ -77,6 +80,7 @@ import { HomeComponent } from './components/home/home.component';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    AuthGuard,
   ],
   bootstrap: [AppComponent]
 })

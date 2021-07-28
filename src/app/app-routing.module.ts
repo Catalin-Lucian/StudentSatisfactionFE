@@ -15,11 +15,26 @@ import {
 
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HttpResponse } from '@angular/common/http';
+import { HomeComponent } from './components/home/home.component';
+import { AuthGuard } from './services/auth-guard.service';
 
 const routes: Routes = [
   {
     path:'page',
+    canActivate:[AuthGuard],
     component:PageComponent,
+    children:[
+      {
+        path:'',
+        redirectTo:'/page/home',
+        pathMatch:'full',
+      },
+      {
+        path:'home',
+        component:HomeComponent
+      }
+
+    ]
   },
   {
     path: 'auth',
@@ -94,11 +109,12 @@ const socialLinks: NbAuthSocialLink[] = [];
             method: 'post',
             requireValidToken: false,
             redirect: {
-              success: '/page',
+              success: '/page/home',
               failure: null,
             },
             defaultErrors: ['Login/Email combination is not correct, please try again.'],
             defaultMessages: ['You have been successfully logged in.'],
+
           },
           register:{
             endpoint:'/api/Authenticate/register',
@@ -117,6 +133,14 @@ const socialLinks: NbAuthSocialLink[] = [];
               success: '/auth',
               failure: '/',
             },
+          },
+          validation:{
+            password: {
+              required: true,
+              minLength:5,
+              maxLength:50,
+              regexp: "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{5,50}$",
+            }
           }
         }),
       ],
@@ -134,8 +158,7 @@ const socialLinks: NbAuthSocialLink[] = [];
         register:{
           strategy:'email',
 
-        }
-
+        },
       },
     }),
   ],

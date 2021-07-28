@@ -1,13 +1,13 @@
 import { Injectable, OnInit } from '@angular/core';
 import { NbAuthService} from '@nebular/auth'
-import {HttpClient,HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {User} from '../_models/user'
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService implements OnInit {
+export class UserService  {
 
   private _userId:string='';
 
@@ -22,11 +22,13 @@ export class UserService implements OnInit {
 
       });
   }
-  ngOnInit(): void {
-  }
 
   getUserData():Observable<User>{
     return this.http.get<User>(`/api/users/${this._userId}`)
+  }
+
+  getUserId():string{
+    return this._userId;
   }
 
 }

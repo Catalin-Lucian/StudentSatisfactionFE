@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Survey} from '../../_models/survey';
+import {SurveyService,} from '../../services/survey.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  _surveys:Survey[] =[];
+
+  constructor(private surveyService:SurveyService) { }
 
   ngOnInit(): void {
+    this.surveyService.getUnswaredSurveys()
+    .subscribe( (surveys)=> {
+        this._surveys=surveys;
+      }
+    );
   }
-
 }
