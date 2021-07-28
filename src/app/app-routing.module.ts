@@ -111,11 +111,11 @@ const socialLinks: NbAuthSocialLink[] = [];
           },
           logout:{
             endpoint:'',
-            method:'post',
+            method:'null',
             alwaysFail:false,
             redirect: {
               success: '/auth',
-              failure: null,
+              failure: '/',
             },
           }
         }),

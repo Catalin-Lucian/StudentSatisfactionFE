@@ -12,8 +12,3 @@ export const AVATAR_ICON_MENU: NbMenuItem[] =[
     link: '/auth/logout',
   }
 ]
-
-export interface User{
-  aud?:string,
-  userId?:string
-};
