@@ -26,6 +26,8 @@ import {
   NbUserModule,
   NbActionsModule,
   NbIconModule,
+  NbTagModule,
+  NbStepperModule,
 
 }
 from '@nebular/theme';
@@ -38,6 +40,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { SurveyCardComponent } from './components/survey-card/survey-card.component';
+import { AnswSurveyComponent } from './components/answ-survey/answ-survey.component';
 
 
 
@@ -48,7 +51,8 @@ import { SurveyCardComponent } from './components/survey-card/survey-card.compon
     HeaderComponent,
     NotFoundComponent,
     HomeComponent,
-    SurveyCardComponent
+    SurveyCardComponent,
+    AnswSurveyComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +68,8 @@ import { SurveyCardComponent } from './components/survey-card/survey-card.compon
     NbUserModule,
     NbActionsModule,
     NbIconModule,
+    NbTagModule,
+    NbStepperModule,
 
     NbButtonModule,
     NbSidebarModule.forRoot(),

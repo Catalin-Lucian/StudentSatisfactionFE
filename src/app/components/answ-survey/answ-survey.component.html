@@ -1,0 +1,18 @@
+<nb-card size="large" status="info">
+  <nb-card-header>
+    <h2 style="text-align: center;">
+      {{survey.name}}
+    </h2>
+  </nb-card-header>
+  <nb-card-body>
+    <form action="">
+      <div *ngFor="let question of survey.questions" class="question">
+        <h5>
+          {{question.questionText}}
+        </h5>
+        
+      </div>
+
+    </form>
+  </nb-card-body>
+</nb-card>

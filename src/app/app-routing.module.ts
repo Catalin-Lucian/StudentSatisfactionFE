@@ -17,6 +17,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HttpResponse } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './services/auth-guard.service';
+import { AnswSurveyComponent } from './components/answ-survey/answ-survey.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
       {
         path:'home',
         component:HomeComponent
+      },
+      {
+        path:'survey/answ/:id',
+        component:AnswSurveyComponent
       }
 
     ]

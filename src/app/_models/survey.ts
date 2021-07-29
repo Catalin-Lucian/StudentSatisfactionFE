@@ -3,10 +3,10 @@ export interface Survey{
   name:string,
   startDate:Date,
   endDate:Date,
-  questions?:Question[],
-  sumitedQuestions?:Question[],
-  comments?:Comment[],
-  topics?:Topic[]
+  questions:Question[],
+  sumitedQuestions:Question[],
+  comments:Comment[],
+  topics:Topic[]
 };
 
 export interface Question{
@@ -14,7 +14,7 @@ export interface Question{
   surveyId:string,
   questionText:string,
   type:string,
-  ratings?:Rating[]
+  ratings:Rating[]
 };
 
 export interface Rating{
