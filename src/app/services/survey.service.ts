@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import {Question, Survey} from '../_models/survey';
+import {Comment, Question, Rating, SumitedQuestion, Survey} from '../_models/survey';
 import {HttpClient} from '@angular/common/http';
 import { UserService} from './user.service';
 import {Topic} from '../_models/survey';
@@ -27,5 +27,30 @@ export class SurveyService  {
 
   getSurveyById(surveyId:string):Observable<Survey>{
     return this.http.get<Survey>(`/api/survey/${surveyId}`);
+  }
+
+  postRating(rating:Rating,questionId:string):Observable<void>{
+    rating.userId=this.userService.getUserId();
+    return this.http.post<void>(`/api/ratings/${questionId}/${this.userService.getUserId()}`, rating);
+
+  }
+
+  postSumitedQuestion(submitedQuestion:SumitedQuestion,surveyId:string):Observable<void>{
+    submitedQuestion.userId=this.userService.getUserId();
+    return this.http.post<void>(`/api/submittedQuestions/user/${this.userService.getUserId()}/survey/${surveyId}`,submitedQuestion);
+  }
+
+  postComment(comment:Comment,surveyId:string):Observable<void>{
+    comment.userId=this.userService.getUserId();
+    return this.http.post<void>(`/api/comments/${this.userService.getUserId()}/${surveyId}}`, comment);
+  }
+
+  getRaingForUser(questionId:string):Observable<Rating>{
+
+    return this.http.get<Rating>(`/api/ratings/question/${questionId}/users/${this.userService.getUserId()}`);
+  }
+
+  getAnswaredSurveys():Observable<Survey[]>{
+    return this.http.get<Survey[]>(`/api/users/${this.userService.getUserId()}/answeredSurveys`);
   }
 }

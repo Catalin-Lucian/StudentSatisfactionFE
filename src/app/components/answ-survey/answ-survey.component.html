@@ -1,18 +1,32 @@
-<nb-card size="large" status="info">
+ <nb-card status="primary" >
   <nb-card-header>
     <h2 style="text-align: center;">
-      {{survey.name}}
+      {{survey?.name}}
     </h2>
-  </nb-card-header>
-  <nb-card-body>
-    <form action="">
-      <div *ngFor="let question of survey.questions" class="question">
-        <h5>
-          {{question.questionText}}
-        </h5>
-        
-      </div>
+   </nb-card-header>
+  </nb-card>
+  <!--<nb-card-body>
+    <form action=""> -->
+      <app-answ-question
+      *ngFor="let question of survey?.questions"
+      [question]="question"
+      [submitEvent]="submitEventSubject">
+    </app-answ-question>
+    <nb-card accent="warning">
+      <nb-card-header>
+        <textarea nbInput fullWidth
+        shape="semi-round"
+        placeholder="Sumit a question for the survey"
+        [(ngModel)]="submitedQuestion"></textarea>
+        <input nbInput fullWidth
+         placeholder="leave a comment"
+         shape="semi-round"
+         [(ngModel)]="comment">
+      </nb-card-header>
+    </nb-card>
 
-    </form>
+    <button nbButton fullWidth  status="success" size="large" (click)="onSubmit()">Submit answers</button>
+
+    <!-- </form>
   </nb-card-body>
-</nb-card>
+</nb-card> -->

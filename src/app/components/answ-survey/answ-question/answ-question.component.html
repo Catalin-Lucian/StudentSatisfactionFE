@@ -1,0 +1,50 @@
+<nb-card  accent="primary">
+  <nb-card-header>
+    {{question?.questionText}}
+  </nb-card-header>
+  <nb-card-body *ngIf="question.type=='plain text'">
+    <input nbInput fullWidth shape="semi-round" [(ngModel)]="answText" placeholder="{{rating?.answear}}">
+  </nb-card-body>
+
+  <nb-card-body *ngIf="question.type=='stars'">
+    <nb-radio-group [(ngModel)]="answStars"  name="{{question.id}}">
+      <nb-radio value=1 >
+        <nb-icon icon="star" status="warning"></nb-icon>
+        <nb-icon icon="star" status="basic"></nb-icon>
+        <nb-icon icon="star" status="basic"></nb-icon>
+        <nb-icon icon="star" status="basic"></nb-icon>
+        <nb-icon icon="star" status="basic"></nb-icon>
+      </nb-radio>
+      <nb-radio value=2 >
+        <nb-icon icon="star" status="warning"></nb-icon>
+        <nb-icon icon="star" status="warning"></nb-icon>
+        <nb-icon icon="star" status="basic"></nb-icon>
+        <nb-icon icon="star" status="basic"></nb-icon>
+        <nb-icon icon="star" status="basic"></nb-icon>
+      </nb-radio>
+      <nb-radio value=3 >
+        <nb-icon icon="star" status="warning"></nb-icon>
+        <nb-icon icon="star" status="warning"></nb-icon>
+        <nb-icon icon="star" status="warning"></nb-icon>
+        <nb-icon icon="star" status="basic"></nb-icon>
+        <nb-icon icon="star" status="basic"></nb-icon>
+      </nb-radio>
+      <nb-radio value=4 >
+        <nb-icon icon="star" status="warning" ></nb-icon>
+        <nb-icon icon="star" status="warning"></nb-icon>
+        <nb-icon icon="star" status="warning"></nb-icon>
+        <nb-icon icon="star" status="warning"></nb-icon>
+        <nb-icon icon="star" status="warning"></nb-icon>
+        <nb-icon icon="star" status="basic"></nb-icon>
+      </nb-radio>
+      <nb-radio value=5 >
+        <nb-icon icon="star" status="warning"></nb-icon>
+        <nb-icon icon="star" status="warning"></nb-icon>
+        <nb-icon icon="star" status="warning"></nb-icon>
+        <nb-icon icon="star" status="warning"></nb-icon>
+        <nb-icon icon="star" status="warning"></nb-icon>
+      </nb-radio>
+    </nb-radio-group>
+
+  </nb-card-body>
+</nb-card>

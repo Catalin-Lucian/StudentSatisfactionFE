@@ -1,45 +1,48 @@
 export interface Survey{
-  id:string,
+  id?:string,
   name:string,
   startDate:Date,
   endDate:Date,
-  questions:Question[],
-  sumitedQuestions:Question[],
-  comments:Comment[],
-  topics:Topic[]
+  questions?:Question[],
+  sumitedQuestions?:Question[],
+  comments?:Comment[],
+  topics?:Topic[]
 };
 
+
 export interface Question{
-  id:string,
+  id?:string,
   surveyId:string,
   questionText:string,
   type:string,
-  ratings:Rating[]
+  ratings?:Rating[]
 };
 
 export interface Rating{
-  id:string,
+  id?:string,
   questionId:string,
-  userId:string,
+  userId?:string,
   points:Number,
   answear:string,
 };
 
 export interface SumitedQuestion{
-  id:string,
-  surveyId:string,
+  id?:string,
+  surveyId?:string,
+  userId?:string,
   questionText:string,
 }
 
 export interface Comment{
-  id:string,
-  userId:string,
+  id?:string,
+  userId?:string,
   surveyId:string,
   commentText:string
 }
 
 export interface Topic{
-  id:string;
+  id?:string;
   title:string,
   details:string,
 }
+

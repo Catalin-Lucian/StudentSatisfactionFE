@@ -3,9 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule,HTTP_INTERCEPTORS  } from '@angular/common/http';
-import {JwtInterceptor} from './_helpers/jwt.interceptor'
-import {ErrorInterceptor } from './_helpers/error.interceptor'
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './_helpers/jwt.interceptor'
+import { ErrorInterceptor } from './_helpers/error.interceptor'
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 
 import { NbEvaIconsModule } from '@nebular/eva-icons';
@@ -28,6 +29,11 @@ import {
   NbIconModule,
   NbTagModule,
   NbStepperModule,
+  NbInputModule,
+  NbButtonGroupModule,
+  NbRadioModule,
+  NbPopoverModule,
+
 
 }
 from '@nebular/theme';
@@ -41,6 +47,11 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { SurveyCardComponent } from './components/survey-card/survey-card.component';
 import { AnswSurveyComponent } from './components/answ-survey/answ-survey.component';
+import { AnswQuestionComponent } from './components/answ-survey/answ-question/answ-question.component';
+import { AnswThaksComponent } from './components/answ-survey/answ-thaks/answ-thaks.component';
+import { CompletedSurveysComponent } from './components/completed-surveys/completed-surveys.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { CompletedSurveyCardComponent } from './components/completed-surveys/completed-survey-card/completed-survey-card.component';
 
 
 
@@ -52,12 +63,18 @@ import { AnswSurveyComponent } from './components/answ-survey/answ-survey.compon
     NotFoundComponent,
     HomeComponent,
     SurveyCardComponent,
-    AnswSurveyComponent
+    AnswSurveyComponent,
+    AnswQuestionComponent,
+    AnswThaksComponent,
+    CompletedSurveysComponent,
+    ProfileComponent,
+    CompletedSurveyCardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'dark' }),
     NbLayoutModule,
@@ -70,6 +87,11 @@ import { AnswSurveyComponent } from './components/answ-survey/answ-survey.compon
     NbIconModule,
     NbTagModule,
     NbStepperModule,
+    NbInputModule,
+    ReactiveFormsModule,
+    NbButtonGroupModule,
+    NbRadioModule,
+    NbPopoverModule,
 
     NbButtonModule,
     NbSidebarModule.forRoot(),

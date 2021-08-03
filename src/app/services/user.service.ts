@@ -31,4 +31,12 @@ export class UserService  {
     return this._userId;
   }
 
+  getUserForSurvey(surveyId:String):Observable<User>{
+    return this.http.get<User>(`/api/survey/${surveyId}/users/${this._userId}`);
+  }
+
+  postUserServey(surveyId:string):Observable<void>{
+    return this.http.post<void>(`/api/survey/${surveyId}/addUser/${this._userId}`,{})
+  }
+
 }

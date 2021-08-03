@@ -14,12 +14,19 @@ import {
 } from '@nebular/auth';
 
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { HttpResponse } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { AnswSurveyComponent } from './components/answ-survey/answ-survey.component';
+import { AnswThaksComponent } from './components/answ-survey/answ-thaks/answ-thaks.component';
+import { CompletedSurveysComponent } from './components/completed-surveys/completed-surveys.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
+  {
+    path:'',
+    redirectTo:'/page/home',
+    pathMatch:'full'
+  },
   {
     path:'page',
     canActivate:[AuthGuard],
@@ -35,8 +42,20 @@ const routes: Routes = [
         component:HomeComponent
       },
       {
-        path:'survey/answ/:id',
+        path:'survey/:id',
         component:AnswSurveyComponent
+      },
+      {
+        path:'thanks',
+        component:AnswThaksComponent
+      },
+      {
+        path:'answer-surveys',
+        component:CompletedSurveysComponent
+      },
+      {
+        path:'profile',
+        component:ProfileComponent
       }
 
     ]
