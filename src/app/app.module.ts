@@ -10,6 +10,8 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { NbSecurityModule } from '@nebular/security';
+
 import {
   NbThemeModule,
   NbLayoutModule,
@@ -95,6 +97,7 @@ import { CompletedSurveyCardComponent } from './components/completed-surveys/com
 
     NbButtonModule,
     NbSidebarModule.forRoot(),
+    NbSecurityModule.forRoot(),
     NbMenuModule.forRoot(),
     NbDatepickerModule.forRoot(),
     NbDialogModule.forRoot(),

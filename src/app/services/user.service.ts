@@ -10,6 +10,7 @@ import {User} from '../_models/user'
 export class UserService  {
 
   private _userId:string='';
+  // private user!:User;
 
   constructor(private authService: NbAuthService,private http:HttpClient) {
     this.authService.onTokenChange()
@@ -18,8 +19,8 @@ export class UserService  {
         if (token.isValid()) {
           var data = token.getPayload(); // here we receive a payload from the token and assigns it to our `user` variable
           this._userId=data.userId;
+          console.log(data);
         }
-
       });
   }
 
@@ -30,6 +31,10 @@ export class UserService  {
   getUserId():string{
     return this._userId;
   }
+
+  // getUser():User{
+  //   return this.user;
+  // }
 
   getUserForSurvey(surveyId:String):Observable<User>{
     return this.http.get<User>(`/api/survey/${surveyId}/users/${this._userId}`);

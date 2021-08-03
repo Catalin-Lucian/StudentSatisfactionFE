@@ -1,21 +1,35 @@
 import { Injectable } from '@angular/core';
-import { CanActivate,Router } from '@angular/router';
-import { NbAuthService } from '@nebular/auth';
-import { tap } from 'rxjs/operators';
+import { ActivatedRouteSnapshot, CanActivate,Router, RouterStateSnapshot } from '@angular/router';
+import { NbAuthJWTToken, NbAuthService } from '@nebular/auth';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-  constructor(private authService: NbAuthService,private router: Router) {
+  private role:any;
+
+  constructor(
+    private authService: NbAuthService,
+    private router: Router,
+    ) {
+      this.authService.getToken().subscribe(token=>{
+        this.role=token.isValid() ? token.getPayload()['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] : 'guest'
+        console.log(this.role);
+      });
   }
 
   canActivate() {
     return this.authService.isAuthenticated()
     .pipe(
-      tap(authenticated => {
-        if (!authenticated) {
+      map((authenticated: any) => {
+        if (!authenticated ) {
           this.router.navigate(['auth/login']);
+          return false;
         }
+        else{
+          return true;
+        }
+
       }),
     );
   }
