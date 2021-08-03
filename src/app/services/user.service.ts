@@ -10,7 +10,7 @@ import {User} from '../_models/user'
 export class UserService  {
 
   private _userId:string='';
-  // private user!:User;
+  private _role:string='';
 
   constructor(private authService: NbAuthService,private http:HttpClient) {
     this.authService.onTokenChange()
@@ -19,7 +19,7 @@ export class UserService  {
         if (token.isValid()) {
           var data = token.getPayload(); // here we receive a payload from the token and assigns it to our `user` variable
           this._userId=data.userId;
-          console.log(data);
+          this._role=data['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
         }
       });
   }
@@ -31,10 +31,9 @@ export class UserService  {
   getUserId():string{
     return this._userId;
   }
-
-  // getUser():User{
-  //   return this.user;
-  // }
+  getUserRole():string{
+    return this._role;
+  }
 
   getUserForSurvey(surveyId:String):Observable<User>{
     return this.http.get<User>(`/api/survey/${surveyId}/users/${this._userId}`);

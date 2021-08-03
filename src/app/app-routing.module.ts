@@ -20,6 +20,8 @@ import { AnswSurveyComponent } from './components/answ-survey/answ-survey.compon
 import { AnswThaksComponent } from './components/answ-survey/answ-thaks/answ-thaks.component';
 import { CompletedSurveysComponent } from './components/completed-surveys/completed-surveys.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { Role } from './_models/role';
+import { CreateSurveyComponent } from './components/create-survey/create-survey.component';
 
 const routes: Routes = [
   {
@@ -31,7 +33,7 @@ const routes: Routes = [
     path:'page',
     canActivate:[AuthGuard],
     component:PageComponent,
-    
+
     children:[
       {
         path:'',
@@ -44,7 +46,8 @@ const routes: Routes = [
       },
       {
         path:'survey/:id',
-        component:AnswSurveyComponent
+        component:AnswSurveyComponent,
+
       },
       {
         path:'thanks',
@@ -53,6 +56,12 @@ const routes: Routes = [
       {
         path:'answer-surveys',
         component:CompletedSurveysComponent
+      },
+      {
+        path:'create-survey',
+        component:CreateSurveyComponent,
+        canActivate: [AuthGuard],
+        data: { role: Role.Admin }
       },
       {
         path:'profile',

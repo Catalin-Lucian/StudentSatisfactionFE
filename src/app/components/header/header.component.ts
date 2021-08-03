@@ -5,6 +5,7 @@ import {AVATAR_ICON_MENU} from './link-pages';
 import {UserService} from '../../services/user.service'
 import {User} from '../../_models/user'
 import { Subscription } from 'rxjs';
+import { Role } from 'src/app/_models/role';
 
 @Component({
   selector: 'app-header',

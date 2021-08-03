@@ -54,6 +54,8 @@ import { AnswThaksComponent } from './components/answ-survey/answ-thaks/answ-tha
 import { CompletedSurveysComponent } from './components/completed-surveys/completed-surveys.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CompletedSurveyCardComponent } from './components/completed-surveys/completed-survey-card/completed-survey-card.component';
+import { CreateSurveyComponent } from './components/create-survey/create-survey.component';
+import { CreateQuestionComponent } from './components/create-survey/create-question/create-question.component';
 
 
 
@@ -70,7 +72,9 @@ import { CompletedSurveyCardComponent } from './components/completed-surveys/com
     AnswThaksComponent,
     CompletedSurveysComponent,
     ProfileComponent,
-    CompletedSurveyCardComponent
+    CompletedSurveyCardComponent,
+    CreateSurveyComponent,
+    CreateQuestionComponent
   ],
   imports: [
     BrowserModule,
