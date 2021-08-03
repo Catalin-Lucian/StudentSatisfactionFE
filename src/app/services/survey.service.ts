@@ -53,4 +53,9 @@ export class SurveyService  {
   getAnswaredSurveys():Observable<Survey[]>{
     return this.http.get<Survey[]>(`/api/users/${this.userService.getUserId()}/answeredSurveys`);
   }
+
+  putRating(rating:Rating,ratingId:any):Observable<void>{
+    rating.userId=this.userService.getUserId();
+    return this.http.put<void>(`/api/ratings/${rating.questionId}/${ratingId}`,rating);
+  }
 }

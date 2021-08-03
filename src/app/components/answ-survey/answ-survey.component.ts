@@ -19,6 +19,7 @@ export class AnswSurveyComponent implements OnInit,OnDestroy  {
   submitedQuestion!:string;
   comment!:string;
   anwseredSurvey:Boolean=false;
+  surveyExpired:Boolean=false;
 
   constructor(
     private route: ActivatedRoute,
@@ -41,16 +42,17 @@ export class AnswSurveyComponent implements OnInit,OnDestroy  {
         }
       })
 
-
       this.id=surveyId;
       this.surveyService.getSurveyById(surveyId).subscribe(survey=>{
         this.survey=survey;
+        if (new Date(survey.endDate)<new Date()){
+          this.surveyExpired=true;
+        }
         this.surveyService.getQuestions(surveyId).subscribe(questions=>{
           this.survey.questions=questions;
         })
       }
       );
-
    });
 
 

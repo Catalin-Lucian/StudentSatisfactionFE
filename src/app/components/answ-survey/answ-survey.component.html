@@ -25,7 +25,7 @@
       </nb-card-header>
     </nb-card>
 
-    <button nbButton fullWidth  status="success" size="large" (click)="onSubmit()">Submit answers</button>
+    <button nbButton fullWidth disabled="{{surveyExpired}}" status="success" size="large" (click)="onSubmit()">Submit answers</button>
 
     <!-- </form>
   </nb-card-body>

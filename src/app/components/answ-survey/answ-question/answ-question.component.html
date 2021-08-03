@@ -7,7 +7,7 @@
   </nb-card-body>
 
   <nb-card-body *ngIf="question.type=='stars'">
-    <nb-radio-group [(ngModel)]="answStars"  name="{{question.id}}">
+    <nb-radio-group value="{{rating?.points}}" (valueChange)="onValueChange($event)"  name="{{question.id}}">
       <nb-radio value=1 >
         <nb-icon icon="star" status="warning"></nb-icon>
         <nb-icon icon="star" status="basic"></nb-icon>
@@ -31,7 +31,6 @@
       </nb-radio>
       <nb-radio value=4 >
         <nb-icon icon="star" status="warning" ></nb-icon>
-        <nb-icon icon="star" status="warning"></nb-icon>
         <nb-icon icon="star" status="warning"></nb-icon>
         <nb-icon icon="star" status="warning"></nb-icon>
         <nb-icon icon="star" status="warning"></nb-icon>

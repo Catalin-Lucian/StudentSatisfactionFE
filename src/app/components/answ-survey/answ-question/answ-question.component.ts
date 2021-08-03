@@ -17,7 +17,7 @@ export class AnswQuestionComponent implements OnInit,OnDestroy {
   private eventSubscription!:Subscription;
 
   answText:string='';
-  answStars:Number=2;
+  answStars:Number=0;
   anseredQuestion:Boolean=false;
   rating!:Rating;
 
@@ -31,7 +31,7 @@ export class AnswQuestionComponent implements OnInit,OnDestroy {
           this.anseredQuestion=false;
         else{
           this.anseredQuestion=true;
-
+          this.answStars=rating.points;
         }
 
       },
@@ -44,11 +44,11 @@ export class AnswQuestionComponent implements OnInit,OnDestroy {
       ()=>{
         if(this.anseredQuestion){
           if ((this.answText!="" && this.answText!=this.rating?.answear) || (this.answStars!=0 && this.answStars!=this.rating?.points)){
-            this.surveyService.postRating({
+            this.surveyService.putRating({
               questionId:this.question.id,
               points:this.answStars,
               answear:this.answText
-            },this.question.id).subscribe();
+            },this.rating.id).subscribe();
           }
         }else{
           if (this.answText!="" || this.answStars!=0 ){
@@ -59,8 +59,6 @@ export class AnswQuestionComponent implements OnInit,OnDestroy {
             },this.question.id).subscribe();
           }
         }
-
-
         if ((this.answText!="" && this.answText!=this.rating?.answear) || (this.answStars!=0 && this.answStars!=this.rating?.points)){
           this.surveyService.postRating({
             questionId:this.question.id,
@@ -70,11 +68,14 @@ export class AnswQuestionComponent implements OnInit,OnDestroy {
         }
       }
     );
-
   }
 
   ngOnDestroy(): void {
     this.eventSubscription.unsubscribe();
+  }
+
+  onValueChange(event: Number){
+    this.answStars=event;
   }
 
 }
