@@ -1,9 +1,63 @@
-<nb-card status="warning" >
+<nb-card status="primary" >
   <nb-card-header>
-    <input nbInput size="large" fullWidth placeholder="Survey Name" style="text-align: center;">
+    <input nbInput [(ngModel)]="surveyName" size="large" fullWidth placeholder="Survey Name" style="text-align: center;">
    </nb-card-header>
 </nb-card>
-<span id="questionContainer">
-  
+<span class="questionContainer">
+  <app-create-question *ngFor="let in of counter(nrQuestion) ;let i = index" [nrId]="i" [submitEvent]="submitEventSubject"></app-create-question>
 </span>
-<button nbButton fullWidth outline status="success" shape="semi-round" ><nb-icon icon="plus-outline"></nb-icon></button>
+
+<button nbButton fullWidth outline
+status="success" shape="semi-round"
+(click)="onAddQuestion()">
+  <nb-icon icon="plus-outline"></nb-icon>
+</button>
+<div class="card-row">
+  <div class="card-col">
+    <nb-card>
+      <nb-card-header style="text-align: center;">Start Date</nb-card-header>
+      <nb-card-body>
+        <nb-calendar size="large" [date]="startDate" [min]="minDate" (dateChange)="handleStartDateChange($event)"></nb-calendar>
+      </nb-card-body>
+    </nb-card>
+
+  </div>
+  <div class="card-col">
+    <nb-card>
+      <nb-card-header style="text-align: center;">End Date</nb-card-header>
+      <nb-card-body>
+        <nb-calendar  size="large" [date]="endDate" (dateChange)="handleEndDateChange($event)"></nb-calendar>
+      </nb-card-body>
+    </nb-card>
+
+  </div>
+</div>
+
+<nb-card accent="primary">
+  <nb-card-header style="text-align: center;" >Select or imput new topic</nb-card-header>
+  <nb-card-body>
+
+    <nb-form-field>
+      <nb-tag-list (tagRemove)="onTagRemove($event)">
+        <nb-tag *ngFor="let tag of tagsSelected" [text]="tag" removable></nb-tag>
+        <input type="text" nbTagInput (tagAdd)="onTagAdd($event.value)" [nbAutocomplete]="autocomplete" fullWidth>
+      </nb-tag-list>
+    </nb-form-field>
+
+    <nb-autocomplete #autocomplete (selectedChange)="onTagAdd($event)">
+      <nb-option *ngFor="let option of tagOptions" [value]="option">{{ option }}</nb-option>
+    </nb-autocomplete>
+
+  </nb-card-body>
+</nb-card>
+
+<button nbButton fullWidth
+style="margin-bottom: 50px;"
+status="success" shape="semi-round"
+(click)="submitSurvey()">
+  Submit Survey
+</button>
+
+
+
+

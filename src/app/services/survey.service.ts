@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {Comment, Question, Rating, SumitedQuestion, Survey} from '../_models/survey';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient,HttpHeaders} from '@angular/common/http';
 import { UserService} from './user.service';
 import {Topic} from '../_models/survey';
 
@@ -57,5 +57,25 @@ export class SurveyService  {
   putRating(rating:Rating,ratingId:any):Observable<void>{
     rating.userId=this.userService.getUserId();
     return this.http.put<void>(`/api/ratings/${rating.questionId}/${ratingId}`,rating);
+  }
+
+  getAllTopics():Observable<Topic[]>{
+    return this.http.get<Topic[]>(`/api/topics`);
+  }
+
+  postTopic(topic:Topic):Observable<void>{
+    return this.http.post<void>(`/api/topics`,topic);
+  }
+
+  postTopicSurvey(surveyId:string,topicId:string|any):Observable<void>{
+    return this.http.post<void>(`/api/survey/${surveyId}/addTopic/${topicId}`,{})
+  }
+
+  postSurvey(survey:Survey):Observable<any>{
+    return this.http.post<any>(`/api/survey`,survey,{observe:'response'});
+  }
+
+  postQuestion(question:Question):Observable<void>{
+    return this.http.post<void>(`/api/survey/${question.surveyId}/questions`,question);
   }
 }

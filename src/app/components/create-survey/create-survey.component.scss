@@ -2,3 +2,18 @@
   display: flex;
   justify-self: center;
 }
+
+:host {
+  display: block;
+}
+
+.card-row {
+  display: flex;
+  margin: 0 -0.5rem;
+  margin-top: 20px;
+}
+
+.card-col {
+  flex: 1 0 calc(50% - 1rem);
+  margin: 0 0.5rem;
+}

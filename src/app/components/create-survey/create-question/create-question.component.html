@@ -1,1 +1,11 @@
-<p>create-question works!</p>
+<nb-card accent="primary">
+  <nb-card-header >
+    <input nbInput fullWidth placeholder="Question title" [(ngModel)]="questionName">
+  </nb-card-header>
+  <nb-card-body>
+    <nb-button-group status="warning" outline=true shape="semi-round" (valueChange)="updateSurveyType($event)">
+      <button nbButtonToggle value="plain text"  fullWidth > <nb-icon icon="text-outline"></nb-icon>Plain Text</button>
+      <button nbButtonToggle value="stars" ><nb-icon icon="star-outline"></nb-icon>Stars</button>
+    </nb-button-group>
+  </nb-card-body>
+</nb-card>

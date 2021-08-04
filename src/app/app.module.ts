@@ -35,6 +35,9 @@ import {
   NbButtonGroupModule,
   NbRadioModule,
   NbPopoverModule,
+  NbCalendarModule,
+  NbFormFieldModule,
+  NbAutocompleteModule,
 
 
 }
@@ -98,6 +101,10 @@ import { CreateQuestionComponent } from './components/create-survey/create-quest
     NbButtonGroupModule,
     NbRadioModule,
     NbPopoverModule,
+    NbCalendarModule,
+    NbFormFieldModule,
+    NbAutocompleteModule,
+
 
     NbButtonModule,
     NbSidebarModule.forRoot(),
