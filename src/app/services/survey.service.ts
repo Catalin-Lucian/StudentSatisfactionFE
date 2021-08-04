@@ -42,7 +42,7 @@ export class SurveyService  {
 
   postComment(comment:Comment,surveyId:string):Observable<void>{
     comment.userId=this.userService.getUserId();
-    return this.http.post<void>(`/api/comments/${this.userService.getUserId()}/${surveyId}}`, comment);
+    return this.http.post<void>(`/api/comments/${this.userService.getUserId()}/${comment.surveyId}`, comment);
   }
 
   getRaingForUser(questionId:string):Observable<Rating>{
