@@ -51,7 +51,8 @@ status="success" shape="semi-round"
   </nb-card-body>
 </nb-card>
 
-<button nbButton fullWidth
+<nb-alert outline="success" size="tiny" *ngIf="completed" style="margin-top:20px;text-align: center;">Suvey Created</nb-alert>
+<button nbButton fullWidth *ngIf="!completed"
 style="margin-bottom: 50px;"
 status="success" shape="semi-round"
 (click)="submitSurvey()"

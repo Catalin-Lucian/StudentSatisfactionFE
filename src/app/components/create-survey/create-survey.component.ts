@@ -12,6 +12,7 @@ import { Topic } from 'src/app/_models/survey';
 })
 export class CreateSurveyComponent implements OnInit {
 
+  completed:boolean=false;
   surveyName:string='';
   surveyId:string|any;
   nrQuestion:number=1;
@@ -78,7 +79,7 @@ export class CreateSurveyComponent implements OnInit {
         }
       })
     })
-    this.router.navigate(['/page/survey-created']);
+    this.completed=true;
   }
 
   onAddQuestion(){
