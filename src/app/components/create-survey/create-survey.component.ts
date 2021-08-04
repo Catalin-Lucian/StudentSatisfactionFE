@@ -1,4 +1,5 @@
 import { Component,ElementRef,OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { NbDateService, NbTagInputDirective, NbTagComponent } from '@nebular/theme';
 import { Subject } from 'rxjs';
 import { SurveyService } from 'src/app/services/survey.service';
@@ -25,7 +26,7 @@ export class CreateSurveyComponent implements OnInit {
 
   submitEventSubject:Subject<string>=new Subject<string>();
 
-  constructor(dateService: NbDateService<Date>,private surveyService:SurveyService) {
+  constructor(dateService: NbDateService<Date>,private surveyService:SurveyService,private router:Router) {
     this.minDate=dateService.addDay(this.minDate,-1);
    }
 
@@ -77,6 +78,7 @@ export class CreateSurveyComponent implements OnInit {
         }
       })
     })
+    this.router.navigate(['/page/survey-created']);
   }
 
   onAddQuestion(){

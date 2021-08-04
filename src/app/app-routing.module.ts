@@ -23,6 +23,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { Role } from './_models/role';
 import { CreateSurveyComponent } from './components/create-survey/create-survey.component';
 import { RegisterComponent } from './components/register/register.component';
+import { SurveyCreatedComponent } from './components/create-survey/survey-created/survey-created.component';
 
 const routes: Routes = [
   {
@@ -53,6 +54,10 @@ const routes: Routes = [
       {
         path:'thanks',
         component:AnswThaksComponent
+      },
+      {
+        path:'survey-created',
+        component:SurveyCreatedComponent
       },
       {
         path:'answer-surveys',

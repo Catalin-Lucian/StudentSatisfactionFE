@@ -61,6 +61,7 @@ import { CompletedSurveyCardComponent } from './components/completed-surveys/com
 import { CreateSurveyComponent } from './components/create-survey/create-survey.component';
 import { CreateQuestionComponent } from './components/create-survey/create-question/create-question.component';
 import { RegisterComponent } from './components/register/register.component';
+import { SurveyCreatedComponent } from './components/create-survey/survey-created/survey-created.component';
 
 
 
@@ -80,7 +81,8 @@ import { RegisterComponent } from './components/register/register.component';
     CompletedSurveyCardComponent,
     CreateSurveyComponent,
     CreateQuestionComponent,
-    RegisterComponent
+    RegisterComponent,
+    SurveyCreatedComponent
   ],
   imports: [
     BrowserModule,
