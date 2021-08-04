@@ -43,4 +43,7 @@ export class UserService  {
     return this.http.post<void>(`/api/survey/${surveyId}/addUser/${this._userId}`,{})
   }
 
+  register(user:User):Observable<void>{
+    return this.http.post<void>(`/api/Authenticate/register`,user);
+  }
 }

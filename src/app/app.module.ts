@@ -38,6 +38,7 @@ import {
   NbCalendarModule,
   NbFormFieldModule,
   NbAutocompleteModule,
+  NbAlertModule,
 
 
 }
@@ -59,6 +60,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { CompletedSurveyCardComponent } from './components/completed-surveys/completed-survey-card/completed-survey-card.component';
 import { CreateSurveyComponent } from './components/create-survey/create-survey.component';
 import { CreateQuestionComponent } from './components/create-survey/create-question/create-question.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 
@@ -77,7 +79,8 @@ import { CreateQuestionComponent } from './components/create-survey/create-quest
     ProfileComponent,
     CompletedSurveyCardComponent,
     CreateSurveyComponent,
-    CreateQuestionComponent
+    CreateQuestionComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -104,6 +107,7 @@ import { CreateQuestionComponent } from './components/create-survey/create-quest
     NbCalendarModule,
     NbFormFieldModule,
     NbAutocompleteModule,
+    NbAlertModule,
 
 
     NbButtonModule,

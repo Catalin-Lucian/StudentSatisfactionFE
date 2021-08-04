@@ -1,0 +1,54 @@
+<h1 style="text-align: center;">
+  Register
+</h1>
+
+<nb-alert outline="danger" size="tiny" *ngIf="errors">Oh snap!<br>{{errors}}</nb-alert>
+
+<label for="username" class="label" >Username</label>
+<input nbInput required  fieldSize="large" fullWidth id="username"
+placeholder="Username" minlength="5" [(ngModel)]="username">
+
+<label for="name" class="label" >Name</label>
+<input nbInput required  fieldSize="large" fullWidth id="name"
+placeholder="Name" minlength="5" [(ngModel)]="name">
+
+<label for="email" class="label" >Email</label>
+<input nbInput required  fieldSize="large" fullWidth id="email" type="email"
+placeholder="Eamil" [(ngModel)]="email">
+
+<label for="password" class="label" >Password</label>
+<input nbInput required  fieldSize="large" fullWidth id="password" type="password"
+placeholder="Password" [(ngModel)]="password">
+
+
+<label for="repeatpaassword" class="label" >Repeat paassword</label>
+<input nbInput required  fieldSize="large" fullWidth id="repeatpaassword" type="password"
+placeholder="Repeat paassword" [(ngModel)]="repeatpaassword">
+
+<label for="birthdate" class="label" >Birth Date</label>
+<span class="container">
+  <nb-calendar required  size="large" [date]="birthDate" [max]="today" class="center"
+(dateChange)="handleBirthDateChange($event)"></nb-calendar>
+</span>
+
+
+<label for="facultyName" class="label" >Faculty Name</label>
+<input nbInput required  fieldSize="large" fullWidth id="facultyName" minlength="10"
+placeholder="Faculty Name" [(ngModel)]="facultyName">
+
+
+<nb-alert outline="success" size="tiny" *ngIf="success" style="margin-top:20px;">{{success}}</nb-alert>
+
+<button nbButton fullWidth status="primary"
+style="margin-top:30px;margin-bottom: 30px;"
+(click)="onRegister()"
+>REGISTER</button>
+
+
+<section aria-label="Sing in" style="text-align: center;">
+  Already have an account?
+  <a routerLink="/auth/login" class="label">
+    Log in
+  </a>
+</section>
+

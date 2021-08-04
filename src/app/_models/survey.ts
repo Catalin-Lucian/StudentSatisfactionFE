@@ -4,7 +4,7 @@ export interface Survey{
   startDate:Date,
   endDate:Date,
   questions?:Question[],
-  sumitedQuestions?:Question[],
+  sumitedQuestions?:SumitedQuestion[],
   comments?:Comment[],
   topics?:Topic[]
 };

@@ -22,6 +22,7 @@ import { CompletedSurveysComponent } from './components/completed-surveys/comple
 import { ProfileComponent } from './components/profile/profile.component';
 import { Role } from './_models/role';
 import { CreateSurveyComponent } from './components/create-survey/create-survey.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   {
@@ -85,7 +86,7 @@ const routes: Routes = [
       },
       {
         path: 'register',
-        component: NbRegisterComponent,
+        component: RegisterComponent,
       },
       {
         path: 'logout',
@@ -95,10 +96,10 @@ const routes: Routes = [
         path: 'request-password',
         component: NbRequestPasswordComponent,
       },
-      // {
-      //   path: 'reset-password',
-      //   component: NbResetPasswordComponent,
-      // },
+      {
+        path: 'reset-password',
+        component: NbResetPasswordComponent,
+      },
     ],
   },
   {
