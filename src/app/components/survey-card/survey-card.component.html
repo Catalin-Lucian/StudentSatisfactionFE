@@ -2,13 +2,8 @@
   <nb-card-header class="point_header" routerLink="/page/survey/{{survey?.id}}">{{survey?.name}}</nb-card-header>
   <nb-card-body>
     Created at: <b>{{survey?.startDate}}</b>
+    <br>
     Ends at: <b>{{survey?.endDate}}</b>
   </nb-card-body>
-  <nb-card-footer>
-    <!-- <nb-tag-list>
-      <nb-tag *ngFor="let topic of survey?.topics"
-      status="info" appearance="filled" text="{{topic.title}}">
-      </nb-tag>
-    </nb-tag-list> -->
-  </nb-card-footer>
+
 </nb-card>

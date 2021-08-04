@@ -25,10 +25,10 @@ export class HomeComponent implements OnInit {
 
     this.searchService.onSearchSubmit()
     .subscribe((data: any) => {
-      console.log(data.term);
       this._surveys=this._initialSurveys.filter((survey:Survey)=>{
-        survey.name.toLowerCase().includes(data.term.toLowerCase())
+        survey.name.toLowerCase().indexOf(data.term.toLowerCase())!==-1
       });
+      console.log(this._surveys);
     })
   }
 }
