@@ -16,7 +16,7 @@ export class AnswQuestionComponent implements OnInit,OnDestroy {
 
   private eventSubscription!:Subscription;
 
-  answText:string='';
+  answText:string="";
   answStars:Number=0;
   anseredQuestion:Boolean=false;
   rating!:Rating;

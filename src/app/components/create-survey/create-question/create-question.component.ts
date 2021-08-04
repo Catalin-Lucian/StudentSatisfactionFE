@@ -19,7 +19,8 @@ export class CreateQuestionComponent implements OnInit,OnDestroy {
 
   ngOnInit(): void {
     this.submitEvent.subscribe(id=>{
-      this.surveyService.postQuestion({surveyId:id,questionText:this.questionName,type:this.questionType})
+      this.surveyService.postQuestion({surveyId:id,questionText:this.questionName,type:this.questionType}).subscribe();
+      console.log(id);
     })
   }
   ngOnDestroy(): void {
